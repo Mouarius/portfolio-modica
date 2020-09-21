@@ -6,9 +6,8 @@
 
 <template>
     <nav id="nav-bar">
-        <a href="#"><img class="menu-icon" src="/images/icons/menu-white-18dp.svg" alt="menu"></a>
-        <a href="#"><img class="menu-icon" src="/images/icons/person-white-18dp.svg" alt="contact"></a>
-
+        <router-link to="/"><img class="menu-icon" src="/images/icons/menu-white-18dp.svg" alt="menu"></router-link>
+        <router-link to="/contact"><img class="menu-icon" src="/images/icons/person-white-18dp.svg" alt="contact"></router-link>
     </nav>
 </template>
 
