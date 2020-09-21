@@ -10,8 +10,7 @@ export default {
     },
     computed: {
         isVisible() {
-            // return this.index === this.$parent.index
-            return true
+            return this.index === this.$parent.index
         }
     }
 }
@@ -26,10 +25,8 @@ export default {
     </transition>
 </template>
 <style lang="scss" scoped>
-    .carousel-slide{
-        img{
-            height:500px;
-        }
+    .carousel-slide img{
+        width: 100%;
     }
     .slide-index{
         display: block;
@@ -37,14 +34,21 @@ export default {
     }
     .slide-fade-enter-active, .slide-fade-leave-active
     {
-        transition: all 5s;
+        transition: all 1.5s;
+    }
+    .slide-fade-leave-active{
+        position: absolute;
+        top:0;
+        left:0;
+        right:0;
+        width:100%;
     }
     .slide-fade-enter
     {
-        transform: translateX(2000px);
+        transform:translateX(100%);
     }
     .slide-fade-leave-to
     {
-        transform: translateX(-2000px);
+        transform: translateX(-100%);
     }
 </style>
