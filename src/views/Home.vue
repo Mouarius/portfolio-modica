@@ -1,21 +1,47 @@
 <script>
 
-import ElementPhoto from "../components/ElementPhoto.vue"
+import Carousel from "../components/Carousel.vue"
 
 export default {
   name: 'Home',
   components: {
-    ElementPhoto
+    Carousel
   },
   data(){
     return{
-      image1:{
-        id:1,
-        source:"/images/photos/village-1.jpg",
-        alt:"Village de cases en Afrique."
-      } 
+      carousels:[
+        {
+          id:0,
+          setOfSlides:[
+            {
+              id:1,
+              image:{
+                source:"/images/photos/village-1.jpg",
+                alt:"Village de cases en Afrique."
+              }
+            },
+            {
+              id:2,
+              image:{
+                source:"/images/photos/mamas-1.jpg",
+                alt:"Dames assises sur des chaises."
+              }
+            },
+            {
+              id:3,
+              image:{
+                source:"/images/photos/danseurs-1.jpg",
+                alt:"Danseurs en tenues traditionnelles."
+              }
+              
+            } 
+          ]
+        }
+      ]
+        
     }
-  }
+
+  },
 }
 </script>
 
@@ -23,8 +49,9 @@ export default {
   <div id="home">
     <div id="main-window">
       <section id="defilement-photos">
-        <ElementPhoto :image="image1"></ElementPhoto>
-    </section>
+        <carousel :id="this.carousels[0].id" :setOfSlides="this.carousels[0].setOfSlides">
+        </carousel>
+      </section>
     </div>
   </div>
 </template>
