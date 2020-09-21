@@ -17,8 +17,8 @@ export default {
 
 <template>
   <div id="app">
-    <NavBar />
     <router-view></router-view>
+    <NavBar />
   </div>
 </template>
 
@@ -27,7 +27,6 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
 }
 
