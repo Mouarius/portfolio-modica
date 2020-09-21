@@ -53,20 +53,45 @@
                 v-bind:key="slide.id"
                 v-bind:image="slide.image"
                 ></carousel-slide>
-        </div>
-            
-        Index carousel : {{ index }}
-        <button class="carousel-prev carousel-nav" v-on:click="prevSlide">Précédent</button>
-        <button class="carousel-next carousel-nav" v-on:click="nextSlide">Suivant</button>
+        </div> 
+        <button class="carousel-nav-prev carousel-nav" v-on:click="prevSlide"></button>
+        <button class="carousel-nav-next carousel-nav" v-on:click="nextSlide"></button>
 
     </div>
 </template>
 <style lang="scss" scoped>
     .carousel-slide-container{
-        display: flex;
-        flex-direction: row;
-        margin: 0;
-        padding: 0;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        bottom:0;
     }
+    .carousel-nav{
+        position: absolute;
+        border:none;
+        cursor: pointer;
+        top:50%;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-color: transparent;
+        mix-blend-mode: difference;
+        transition: transform 0.4s;
+    }
+    .carousel-nav:hover{
+        transform: scale(1.3);
+    }
+    .carousel-nav-prev{
+        left:150px;
+        height:50px;
+        width:50px;
+        background-image: url("/images/icons/keyboard_arrow_left-white-18dp.svg");
+    }
+    .carousel-nav-next{
+        right:100px;
+        height:50px;
+        width:50px;
+        background-image: url("/images/icons/keyboard_arrow_right-white-18dp.svg");
+    }
+
 </style>
 
