@@ -18,12 +18,16 @@
         width: 80px;
         height: 100%;
         top: 0;
-        left: 0;
+        left: -79px;
 
         display: flex;
         flex-direction: column;
 
         position: fixed;
+
+        opacity:0;
+
+        transition: transform 0.5s, opacity 0.5s;
 
         a{
             display: flex;
@@ -41,6 +45,10 @@
                 height: 100%;
             }
         }
+    }
+    nav:hover{
+        transform: translateX(79px);
+        opacity:1;
     }
 
 </style>

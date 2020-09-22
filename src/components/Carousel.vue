@@ -11,6 +11,7 @@
         return{
             index:0,
             slides:[],
+            directionSlide:'right'
         }
     },
     mounted (){
@@ -26,6 +27,7 @@
     },
     methods:{
         nextSlide () {
+            this.directionSlide = 'right'
             if (this.index < this.slidesCount -1){
                 this.index +=1
             }
@@ -34,6 +36,7 @@
             }
         },
         prevSlide () {
+            this.directionSlide = 'left'
             if (this.index > 0){
                 this.index -=1
             }
