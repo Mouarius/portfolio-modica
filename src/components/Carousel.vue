@@ -11,7 +11,7 @@
         return{
             index:0,
             slides:[],
-            directionSlide:'right'
+            directionSlide:null
         }
     },
     mounted (){
@@ -44,6 +44,10 @@
                 this.index = this.slidesCount - 1
             }
         },
+        goTo (i) {
+            this.directionSlide = this.index < i ? 'right' : 'left';
+            this.index = i;
+        }
     }
     }
 </script>
@@ -59,25 +63,59 @@
         </div> 
         <button class="carousel-nav-prev carousel-nav" v-on:click="prevSlide"></button>
         <button class="carousel-nav-next carousel-nav" v-on:click="nextSlide"></button>
+        <div class="slide-index">
+            <button v-for="n in this.slidesCount" :key="n" @click="goTo(n-1)" :class="{active:n-1 == index}"></button>  
+        </div>
 
     </div>
 </template>
 <style lang="scss" scoped>
+
+    .slide-index{
+        position: absolute;
+        top:50px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        button{
+            width: 12px;
+            height: 12px;
+            background-color: white;
+            mix-blend-mode: difference;
+            border: none;
+            border-radius: 100%;
+            margin:10px;
+            padding: 0;
+            cursor: pointer;
+
+            transition: all 0.5s;
+        }
+        button.active{
+            transform: scale(1.4);
+            margin: 10px 20px;
+
+        }
+    }
+
+
     .carousel-slide-container{
         position: relative;
         width: 100%;
         height: 100%;
         bottom:0;
+        overflow: hidden;
     }
     .carousel-nav{
         position: absolute;
         border:none;
         cursor: pointer;
         top:50%;
+        height:80px;
+        width:80px;
         background-repeat: no-repeat;
         background-size: contain;
         background-color: transparent;
-        mix-blend-mode: difference;
+        mix-blend-mode: exclusion;
         transition: transform 0.4s;
     }
     .carousel-nav:hover{
@@ -85,14 +123,10 @@
     }
     .carousel-nav-prev{
         left:150px;
-        height:50px;
-        width:50px;
         background-image: url("/images/icons/keyboard_arrow_left-white-18dp.svg");
     }
     .carousel-nav-next{
         right:100px;
-        height:50px;
-        width:50px;
         background-image: url("/images/icons/keyboard_arrow_right-white-18dp.svg");
     }
 

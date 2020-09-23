@@ -13,8 +13,15 @@ export default {
             return this.index === this.$parent.index
         },
         slideDirection(){
-            return "slide-" + this.$parent.directionSlide //crée la classe du nom de transition en fonction de la propriété directionSlide du parent
+            if(this.$parent.directionSlide)
+            {
+                return "slide-" + this.$parent.directionSlide //crée la classe du nom de transition en fonction de la propriété directionSlide du parent
+            }
+            return ""
         }
+    },
+    methods:{
+
     }
 }
 </script>
@@ -22,19 +29,16 @@ export default {
 <template>
     <transition :name="slideDirection">
         <div v-show="isVisible" class="carousel-slide">
-            <span class="slide-index" v-if="this.indexVisible">{{ index }}</span>
             <img class="carousel-slide-image" v-bind:src="image.source" v-bind:alt="image.alt"/>
         </div>
     </transition>
 </template>
 <style lang="scss" scoped>
+
     .carousel-slide img{
         width: 100%;
     }
-    .slide-index{
-        display: block;
-        position:relative;
-    }
+
     // Durée des transitions
     .slide-left-enter-active, .slide-left-leave-active,.slide-right-enter-active, .slide-right-leave-active
     {
